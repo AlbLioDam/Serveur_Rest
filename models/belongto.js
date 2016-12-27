@@ -10,9 +10,50 @@ function belongto()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select firstname,lastname,teamName FROM belongto'+
+            con.query('select * FROM belongto'+
             ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
-            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam', function(err, result) 
+            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam', function(err, result)
+            {
+                con.release();
+                res.send(result);
+            });
+        });
+    };
+
+    /**
+     * Get ALL users in team from table
+     * @params res response 
+     */
+    this.getAllInTeam = function(idTeam, res) 
+    {
+        console.log('getAllInTeam');
+        connection.acquire(function(err, con)
+        {
+            con.query('SELECT * FROM belongto'+
+            ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
+            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam'+
+            ' WHERE belongto.idTeam = ?', [idTeam], function(err, result)
+            {
+                con.release();
+                res.send(result);
+            });
+        });
+    };
+
+    /**
+     * Get ALL users in team from table
+     * @params res response 
+     */
+    this.getAllNotInTeam = function(idTeam, res)
+    {
+        console.log('getAllNotInTeam');
+        console.log(idTeam);
+        connection.acquire(function(err, con)
+        {
+            con.query('SELECT * FROM Users WHERE Users.idUser NOT IN (SELECT belongto.idUser FROM belongto'+
+            ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
+            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam'+
+            ' WHERE belongto.idTeam = ?)', [idTeam], function(err, result)
             {
                 con.release();
                 res.send(result);
@@ -25,45 +66,23 @@ function belongto()
      * @params belongto belongto in json format
      * @params res response
      */
-    this.create = function(belongto, res) 
+    this.create = function(req, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into belongto set ?', belongto, function(err, result) 
+
+            con.query('insert into belongto (idUser, idTeam) values(?,?) ', [req.idUser, req.idTeam], function(err, result)
             {
                 con.release();
-                if (err) 
+                if (err)
                 {
                     console.log(err);
                     res.send({status: 1, message: 'belongto creation failed'});
-                } else 
-                {
-                    getLastId(res);
-                }
-            });
-        });
-    };
-
-    /**
-     * Get a specific belongto
-     */
-    this.get = function(userid, idteam, res) 
-    {
-        connection.acquire(function(err, con) 
-        {
-            con.query('select firstname,lastname,teamName FROM belongto'+
-            ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
-            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam'+
-            ' WHERE belongto.idUser = ? AND belongto.idTeam = ?', [idUser, idTeam], function(err, result) {
-                con.release();
-                if (err) 
-                {
-                    console.log(err);
-                    res.send({status: 1, message: 'Failed to find'});
                 } 
                 else 
                 {
-                    res.send(result);
+                    console.log("belongto creation ok");
+                    res.send({status: 0, message: 'belongto creation ok'});
                 }
             });
         });
@@ -74,11 +93,14 @@ function belongto()
      * @params id belongto's id
      * @params res response
      */
-    this.delete = function(iduser, idteam, res) 
+    this.removeUserFromTeam = function(req, res) 
     {
+        console.log("models - delete user in team");
+        console.log(req.idUser);
+        console.log(req.idTeam);
         connection.acquire(function(err, con) 
         {
-            con.query('delete FROM belongto where belongto.idUser = ? AND belongto.idTeam = ?', [idUser, idTeam], function(err, result) 
+            con.query('delete FROM belongto where belongto.idUser = ? AND belongto.idTeam = ?', [req.idUser, req.idTeam], function(err, result) 
             {
                 con.release();
                 if (err) 

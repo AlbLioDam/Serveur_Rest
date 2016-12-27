@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2016 Lionel Chialvo, Alban Martinez, Damien El-sabbagh inspired from David di Marcantonio source code
+Copyright (c) 2016 David di Marcantonio 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

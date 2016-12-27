@@ -10,12 +10,22 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+
+var cors = require('cors');
 var app = express();
+
+// use it before all route definitions
+app.use(cors({origin: 'http://localhost:8081'}));
+app.options('*', cors());
 
 /*--Parser --*/
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({
+ limit: '150mb',
+ extended: true 
+}));
+
 
 /*-- Allow CORS for cross origin--*/
 app.use(function(req, res, next) {
@@ -84,6 +94,24 @@ app.listen(3000)
 
 module.exports = app;
 
-console.log('Server running at http://10.111.61.66:3000/');
 
+
+console.log("                _           _       ");
+console.log("               (_)         | |      ");
+console.log(" ___ _   _ ____ _  ___ ____| |_  ");
+console.log("/ __| | | |  __| |/ __/    | __/");
+console.log("\\__\\| |_| | |  | | (_| (_| | |  ");
+console.log("|___/\\__,_|_|  |_|\\___\\__,_|_|");  
+
+
+console.log("**********************************");
+console.log("*                                **");
+console.log("* Welcome To Suricat REST Server **");
+console.log("*                                **");
+console.log('*      Server is running         **');
+console.log("*                                **");
+console.log("*         MIT Licence            **");
+console.log("*    Alban / Lionel / Damien     **");
+console.log("***********************************");
+console.log(" **********************************");
 

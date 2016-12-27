@@ -68,11 +68,11 @@ function Team()
      * Update a specific Team
      * @params Team Team in json format
      */
-    this.update = function(Team, res) 
+    this.updateTeam = function(Team, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Team set ? where id = ?', [Team, Team.id], function(err, result) 
+            con.query('update Team set ? where idTeam = ?', [Team, Team.idTeam], function(err, result) 
             {
                 con.release();
                 if (err) 

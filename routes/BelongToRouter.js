@@ -13,42 +13,30 @@ BelongToRouter.route('/')
 
 .post(function(req, res, next)
 {
-    //belongto : convert json to other json
     belongto.create(req.body, res);
-});
-
-BelongToRouter.route('/:id')
-
-.get(function(req,res,next)
-{
-    //belongto : get element by req.params.itemId
-    belongto.getAllTeams(req.params.id, res);
-})
-
-.get(function(req,res,next)
-{
-    //belongto : get element by req.params.itemId
-    belongto.getAllUsers(req.params.id, res);
-})
-
-BelongToRouter.route('/:id/:id')
-
-    //belongto : get specific element 
-.get(function(req,res,next)
-{
-    belongto.getSpecific(req.params.id, req.params.id2, res);
-})
-
-.put(function(req, res, next)
-{
-  //belongto : get element by req.params.itemId
-    belongto.update(req.params.id, req.params.id2, req.body, res);
 })
 
 .delete(function(req, res, next)
 {
-    //belongto : get element by req.params.itemId
-    belongto.delete(req.params.id, req.params.id2, res);
-});
- 
+	console.log("route - delete user in team");
+	console.log(req.body);
+    belongto.removeUserFromTeam(req.body, res);
+})
+
+BelongToRouter.route('/usersinteam/:idTeam')
+
+.get(function(req,res,next)
+{
+    console.log('/usersinteam/:idTeam');
+    belongto.getAllInTeam(req.params.idTeam, res);
+})
+
+BelongToRouter.route('/usersnotinteam/:idTeam')
+
+.get(function(req,res,next)
+{
+    console.log('/usersnotinteam/:idTeam');
+    belongto.getAllNotInTeam(req.params.idTeam, res);
+})
+
 module.exports = BelongToRouter;

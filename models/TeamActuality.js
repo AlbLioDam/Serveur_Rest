@@ -128,7 +128,6 @@ function TeamActuality()
    
     function getLastIdTeamActualityInsert(idTeam, res) 
     {
-        console.log('get last id');
         connection.acquire(function(err, con) 
         {
             con.query('SELECT MAX(idActuality) as idActuality FROM Actuality',  function(err, result) {
@@ -148,8 +147,9 @@ function TeamActuality()
 
     function insertTeamActuality(idActuality, idTeam, res)
     {
-        console.log("idactu : " + idActuality);
-        console.log("idteam : " + idTeam);
+        console.log("******** POST TEAM ACTUALITY *********");
+        console.log("idactuality : " + idActuality);
+        console.log("idteam : " + idTeam);        
         connection.acquire(function(err, con) 
         {
             con.query('insert into TeamActuality(idActuality, idTeam) VALUES(?, ?)', [idActuality, idTeam] , function(err, result){
@@ -167,6 +167,7 @@ function TeamActuality()
                 }
             });
         });
+    console.log("**************************************");
     }
 
 }

@@ -15,7 +15,12 @@ TeamRouter.route('/')
 {
     //TODO : convert json to other json
     team.create(req.body, res);
-});
+})
+
+.put(function(req, res, next)
+{
+    team.updateTeam(req.body, res);
+})
 
 TeamRouter.route('/:id')
 

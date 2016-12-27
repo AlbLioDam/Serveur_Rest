@@ -60,4 +60,17 @@ UserRouter.route('/login')
     // TODO : check if login & password are in database
     user.checkLogin(req.body, res);
 }); 
+
+/*-- PATH & METHODS AVAILABLE FROM ROUTE '/postUser' --*/
+UserRouter.route('/postUser')
+
+.post(function(req, res, next) 
+{
+    console.log('postUser');
+    // TODO : check if login & password are in database
+    user.postUser(req.body, res);
+}); 
+
+
+
 module.exports = UserRouter;
