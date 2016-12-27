@@ -1,3 +1,10 @@
+                _           _	    _
+               (_)         | |     | |
+ ___ _   _ ____ _  ___ ____| |_    | | ___
+/ __| | | |  __| |/ __/    | __/ _ | |/ __|
+\__\| |_| | |  | | (_| (_| | |  | |/ |\__\
+|___/\__,_|_|  |_|\___\__,_|_|	 \__/ |___/
+
 # nodejs-rest-mysql
 
 A REST server based on NodeJS, Express and MySQL with the NPM module [mysql](https://github.com/mysqljs/mysql).
