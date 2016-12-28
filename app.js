@@ -48,6 +48,7 @@ var UserRouter = require('./routes/UserRouter');
 var MessageRouter = require('./routes/MessageRouter');
 var ToDoRouter = require('./routes/ToDoRouter');
 var TeamActualityRouter = require('./routes/TeamActualityRouter');
+var CorporateLifeActualityRouter = require('./routes/CorporateLifeActualityRouter');
 
 /*-- Routes V2 --*/
 //var WorksCouncilActualityRouter = require('./routes/WorksCouncilActualityRouter');
@@ -57,7 +58,7 @@ var TeamActualityRouter = require('./routes/TeamActualityRouter');
 //var GotShortcutRouter = require('./routes/GotShortcutRouter');
 //var GotToolRouter = require('./routes/GotToolRouter');
 //var HaveRouter = require('./routes/HaveRouter');
-//var CorporateLifeActualityRouter = require('./routes/CorporateLifeActualityRouter');
+
 var connection = require('./connection');
 
 /* -- connect to mysql -- */
