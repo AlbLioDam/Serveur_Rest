@@ -1,35 +1,40 @@
 var connection = require('../connection');
  
-function TeamActuality() 
+function corporate() 
 {
     /**
-     * Get ALL Actuality from table
+     * Get ALL Corporate Actuality from table
      * @params res response 
      */
-     
-    this.getAll = function(res) 
+     this.getAll = function(res) 
     {
+            
         connection.acquire(function(err, con) 
-        {
-            con.query('select Actuality.idActuality, title, dateActuality, publication, photo, idTeam from Actuality '+
-                'inner join TeamActuality on TeamActuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc', function(err, result) 
-            {
+        {con.query( 'select title, dateActuality, publication, photo from Actuality '+
+                'inner join corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
+                'where corporatelifeactuality.idActuality = Actuality.idActuality' , function(err, result) 
+{
                 con.release();
                 res.send(result);
+                console.log("**********************************");
+                console.log("** Get all Corporate Actualites **");
+                console.log("**********************************");
+                console.log(result);
+                console.log("**********************************");
             });
         });
-    };
+    }; 
 
     /**
-     * Create a Actuality
+     * Create an Corporate Actuality
      * @params Actuality Actuality in json format
      * @params res response
      */
-    this.create = function(TeamActuality, res) 
+    this.create = function(corporatelifeactuality, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into Actuality(title, dateActuality, publication, photo, idUser) VALUES (?, now(), ?, ?, ?)', [TeamActuality.title, TeamActuality.publication, TeamActuality.photo, TeamActuality.idUser], function(err, result)
+            con.query('insert into Actuality(title, dateActuality, publication, photo, idUser) VALUES (?, now(), ?, ?, ?)', [corporatelifeactuality.title, corporatelifeactuality.publication, corporatelifeactuality.photo, corporatelifeactuality.idUser], function(err, result)
             {
                 con.release();
                 if (err) 
@@ -39,7 +44,8 @@ function TeamActuality()
                 } 
                 else 
                 {
-                    getLastIdTeamActualityInsert(TeamActuality.idTeam, res);
+                    
+                    getLastIdCorpActualityInsert(res);
                 }
             });
         });
@@ -121,12 +127,13 @@ function TeamActuality()
     };
 
     /**
+     * 
      * get the last id 
      * TODO : move it in logical file
      * @params res response
      */
    
-    function getLastIdTeamActualityInsert(idTeam, res) 
+    function getLastIdCorpActualityInsert(res) 
     {
         connection.acquire(function(err, con) 
         {
@@ -139,31 +146,36 @@ function TeamActuality()
                 }
                 else 
                 {
-                    insertTeamActuality(result[0].idActuality, idTeam, res);
+                    insertcorporatelifeactuality(result[0].idActuality, res);
                 }
             });
         });
     }
 
-    function insertTeamActuality(idActuality, idTeam, res)
+    /**
+     * 
+     * Insert id value in Corporate Life Actuality table 
+     * TODO : move it in logical file
+     * @params res response
+     */
+    function insertcorporatelifeactuality(idActuality, res)
     {
-        console.log("******** POST TEAM ACTUALITY *********");
-        console.log("idactuality : " + idActuality);
-        console.log("idteam : " + idTeam);        
+        console.log("******** POST Corporate ACTUALITY *********");
+        console.log("idactuality : " + idActuality);        
         connection.acquire(function(err, con) 
         {
-            con.query('insert into TeamActuality(idActuality, idTeam) VALUES(?, ?)', [idActuality, idTeam] , function(err, result){
+            con.query('insert into corporatelifeactuality(idActuality) VALUES(?)', [idActuality] , function(err, result){
                 con.release();
                 if (err) 
                 {
                     console.log(err);
-                    console.log("creation Team Actuality failed");
-                    res.send({status: 1, message: 'TeamActuality creation failed'});
+                    console.log("creation corporatelifeactuality Actuality failed");
+                    res.send({status: 1, message: 'corporatelifeactuality creation failed'});
                 } 
                 else 
                 {
-                    console.log("creation Team Actuality ok");
-                    res.send({status: 0, message: 'Insert in TeamActuality ok'});
+                    console.log("creation corporatelifeactuality Actuality ok");
+                    res.send({status: 0, message: 'Insert in corporatelifeactuality ok'});
                 }
             });
         });
@@ -172,4 +184,4 @@ function TeamActuality()
 
 }
 
-module.exports = new TeamActuality();
+module.exports = new corporate();

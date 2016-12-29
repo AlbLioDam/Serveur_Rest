@@ -1,40 +1,40 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var corporatelifeactuality = express.Router();
+var CorporateLifeActualityRouter = express.Router();
 
-var corporatelifeactuality = require('../models/corporatelifeactuality');
+var corporate = require('../models/corporatelifeactuality');
 
-LeisureRouter.route('/')
+CorporateLifeActualityRouter.route('/')
 
 .get(function(req,res,next)
 {
-    corporatelifeactuality.getAll(res);
+    corporate.getAll(res);
 })
 
 .post(function(req, res, next)
 {
     //TODO : convert json to other json
-    corporatelifeactuality.create(req.body, res);
+    corporate.create(req.body, res);
 });
 
-LeisureRouter.route('/:id')
+CorporateLifeActualityRouter.route('/:id')
 
 .get(function(req,res,next)
 {
     //TODO : get element by req.params.itemId
-    corporatelifeactuality.get(req.params.id, res);
+    corporate.get(req.params.id, res);
 })
 
 .put(function(req, res, next)
 {
   //TODO : get element by req.params.itemId
-    corporatelifeactuality.update(req.params.id, req.body, res);
+    corporate.update(req.params.id, req.body, res);
 })
 
 .delete(function(req, res, next)
 {
     //TODO : get element by req.params.itemId
-    corporatelifeactuality.delete(req.params.id, res);
+    corporate.delete(req.params.id, res);
 });
  
-module.exports = LeisureRouter;
+module.exports = CorporateLifeActualityRouter;
