@@ -1,5 +1,7 @@
 # nodejs-rest-mysql
 
+Server called "Le Cerbere" (data keeper)
+
 A REST server based on NodeJS, Express and MySQL with the NPM module [mysql](https://github.com/mysqljs/mysql).
 
 Use `npm start` to launch the node app. 
