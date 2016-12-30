@@ -8,6 +8,6 @@ Use `npm start` to launch the node app.
 
 Edit `connection.js` to change database parameters with yours.
 
-`afpamon.sql` is a simple sql script used as example in this project. 
+`suricat.sql` is a simple sql script used as example in this project. 
 
 This project has been tested with the node version 4.2.x. 
