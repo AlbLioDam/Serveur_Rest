@@ -507,7 +507,7 @@ INSERT INTO LeisureActuality(idActuality, category) VALUES (23, "Sport");
 #------------------------------------------------------------
 # INSERT : CorporateLifeActuality
 #------------------------------------------------------------
-INSERT INTO LeisureActuality(idActuality, category) VALUES (24);
+INSERT INTO CorporateLifeActuality(idActuality) VALUES (24);
 
 /*
 #------------------------------------------------------------
