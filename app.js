@@ -46,6 +46,8 @@ var MessageRouter = require('./routes/MessageRouter');
 var ToDoRouter = require('./routes/ToDoRouter');
 var TeamActualityRouter = require('./routes/TeamActualityRouter');
 var CorporateLifeActualityRouter = require('./routes/CorporateLifeActualityRouter');
+var WorkCouncilActualityRouter = require('./routes/WorkCouncilActualityRouter');
+var LeisureActualityRouter = require('./routes/LeisureActualityRouter');
 
 /*-- Routes V2 --*/
 //var WorksCouncilActualityRouter = require('./routes/WorksCouncilActualityRouter');
@@ -76,10 +78,10 @@ app.use('/todo', ToDoRouter);
 app.use('/teamActuality', TeamActualityRouter);
 app.use('/team',TeamRouter);
 app.use('/corpActuality', CorporateLifeActualityRouter);
+app.use('/workCouncilActuality', WorkCouncilActualityRouter);
+app.use('/leisureActuality', LeisureActualityRouter);
 
 /*-- App use V2--*/
-//app.use('/Works', WorksCouncilActualityRouter);
-//app.use('/Leisure', LeisureActualityRouter);
 //app.use('/Todo', TodoRouter);
 //app.use('/PostComment', PostCommentRouter);
 //app.use('/Message', MessageRouter);
@@ -110,7 +112,7 @@ console.log("| |    / _ \\  / __/ _ \\ '__| '_ \\ / _ \\ '__/ _ \\");
 console.log("| |___|  __/ | (_|  __/ |  | |_) |  __/ | |  __/");
 console.log("\\_____/\\___|  \\___\\___|_|  |_.__/ \\___|_|  \\___|"); 
 
-console.log("    **********************************");
+console.log("    ***********************************");
 console.log("    * Welcome To Suricat REST Server **");
 console.log("    *                                **");
 console.log('    *      Server is running         **');
@@ -118,5 +120,5 @@ console.log("    *                                **");
 console.log("    *         MIT Licence            **");
 console.log("    *    Alban / Lionel / Damien     **");
 console.log("    ***********************************");
-console.log("     **********************************");
+console.log("    ***********************************");
 

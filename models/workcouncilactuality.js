@@ -1,40 +1,41 @@
 var connection = require('../connection');
  
-function corporate() 
+function workcouncil() 
 {
     /**
-     * Get ALL Corporate Actuality from table
+     * Get ALL work council Actuality from table
      * @params res response 
      */
-     this.getAll = function(res) 
+     this.getAll = function(res)
     {
             
         connection.acquire(function(err, con) 
-        {con.query( 'select title, dateActuality, publication, photo from Actuality '+
-                'inner join corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
-                'where corporatelifeactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
-{
+        {
+            con.query( 'select title, dateActuality, publication, photo from Actuality '+
+                'inner join workscouncilactuality on workscouncilactuality.idActuality = Actuality.idActuality '+
+                'where workscouncilactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
+            {
                 con.release();
                 res.send(result);
-                console.log("**********************************");
-                console.log("** Get all Corporate Actualites **");
-                console.log("**********************************");
+                console.log("*************************************");
+                console.log("** Get all work council Actualites **");
+                console.log("*************************************");
                 console.log(result);
-                console.log("**********************************");
+                console.log("*************************************");
             });
         });
     }; 
 
     /**
-     * Create an Corporate Actuality
+     * Create an work council Actuality
      * @params Actuality Actuality in json format
      * @params res response
      */
-    this.create = function(corporatelifeactuality, res) 
+    this.create = function(workscouncilactuality, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into Actuality(title, dateActuality, publication, photo, idUser) VALUES (?, now(), ?, ?, ?)', [corporatelifeactuality.title, corporatelifeactuality.publication, corporatelifeactuality.photo, corporatelifeactuality.idUser], function(err, result)
+            con.query('insert into Actuality(title, dateActuality, publication, photo, idUser) VALUES (?, now(), ?, ?, ?)', [workscouncilactuality.title, workscouncilactuality.publication, workscouncilactuality.photo, workscouncilactuality.idUser], function(err, result)
             {
                 con.release();
                 if (err) 
@@ -44,8 +45,8 @@ function corporate()
                 } 
                 else 
                 {
-                    
-                    getLastIdCorpActualityInsert(res);
+                    console.log("insert into actuality ok !");
+                    getLastIdWorksCouncilActualityInsert(res);
                 }
             });
         });
@@ -54,13 +55,13 @@ function corporate()
     /**
      * Get Team Actualities by teamId
      */
-    this.getAllTeamActualities = function(id, res) 
+    this.getAllWorksCouncilActuality = function(id, res)
     {
         connection.acquire(function(err, con) 
         {
             con.query('select title, dateActuality, publication, photo from Actuality '+
-                'inner join TeamActuality on TeamActuality.idActuality = Actuality.idActuality '+
-                'where TeamActuality.idTeam = ?', [id], function(err, result) {
+                'inner join WorksCouncilActuality on WorksCouncilActuality.idActuality = Actuality.idActuality '+
+                'where WorksCouncilActuality.idTeam = ?', [id], function(err, result) {
                 con.release();
                 if (err) 
                 {
@@ -106,11 +107,11 @@ function corporate()
      * @params id Actuality's id
      * @params res response
      */
-    this.delete = function(id, res) 
+/*    this.delete = function(id, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('delete from TeamActuality where idActuality = ?', [id], function(err, result) 
+            con.query('delete from WorksCouncilActuality where idActuality = ?', [id], function(err, result) 
             {
                 con.release();
                 if (err) 
@@ -124,7 +125,7 @@ function corporate()
                 }
             });
         });
-    };
+    };*/
 
     /**
      * 
@@ -133,7 +134,7 @@ function corporate()
      * @params res response
      */
    
-    function getLastIdCorpActualityInsert(res) 
+    function getLastIdWorksCouncilActualityInsert(res)
     {
         connection.acquire(function(err, con) 
         {
@@ -146,7 +147,8 @@ function corporate()
                 }
                 else 
                 {
-                    insertcorporatelifeactuality(result[0].idActuality, res);
+                    console.log("get max into actuality ok !");
+                    insertworkscouncilactuality(result[0].idActuality, res);
                 }
             });
         });
@@ -154,28 +156,28 @@ function corporate()
 
     /**
      * 
-     * Insert id value in Corporate Life Actuality table 
+     * Insert id value in work council Life Actuality table 
      * TODO : move it in logical file
      * @params res response
      */
-    function insertcorporatelifeactuality(idActuality, res)
+    function insertworkscouncilactuality(idActuality, res)
     {
-        console.log("******** POST Corporate ACTUALITY *********");
+        console.log("******** POST work council ACTUALITY *********");
         console.log("idactuality : " + idActuality);        
         connection.acquire(function(err, con) 
         {
-            con.query('insert into corporatelifeactuality(idActuality) VALUES(?)', [idActuality] , function(err, result){
+            con.query('insert into workscouncilactuality(idActuality) VALUES(?)', [idActuality] , function(err, result){
                 con.release();
                 if (err) 
                 {
                     console.log(err);
-                    console.log("creation corporatelifeactuality Actuality failed");
-                    res.send({status: 1, message: 'corporatelifeactuality creation failed'});
+                    console.log("creation workscouncilactuality Actuality failed");
+                    res.send({status: 1, message: 'workscouncilactuality creation failed'});
                 } 
                 else 
                 {
-                    console.log("creation corporatelifeactuality Actuality ok");
-                    res.send({status: 0, message: 'Insert in corporatelifeactuality ok'});
+                    console.log("creation workscouncilactuality Actuality ok");
+                    res.send({status: 0, message: 'Insert in workscouncilactuality ok'});
                 }
             });
         });
@@ -184,4 +186,4 @@ function corporate()
 
 }
 
-module.exports = new corporate();
+module.exports = new workcouncil();
