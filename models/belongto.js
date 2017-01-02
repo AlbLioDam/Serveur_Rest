@@ -21,6 +21,25 @@ function belongto()
     };
 
     /**
+     * Get ALL users from table
+     * @params res response 
+     */
+    this.getTeamsOfUser = function(idUser, res)
+    {
+        connection.acquire(function(err, con) 
+        {
+            con.query('select * FROM belongto'+
+            ' INNER JOIN Team ON Team.idTeam = belongto.idTeam'+
+            ' WHERE idUser = ?', [idUser], function(err, result)
+            {
+                con.release();
+                console.log(result);
+                res.send(result);
+            });
+        });
+    };
+
+    /**
      * Get ALL users in team from table
      * @params res response 
      */

@@ -149,7 +149,7 @@ function User()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select idUser, firstname, lastname, status from Users where email = ? AND password = ? AND active = true', [user.email, user.password], function(err, result) 
+            con.query('select idUser, firstname, lastname, status, corporatelifeRepresentative, workCouncilRepresentative from Users where email = ? AND password = ? AND active = true', [user.email, user.password], function(err, result) 
             {
                 con.release();
                 if (err) 
