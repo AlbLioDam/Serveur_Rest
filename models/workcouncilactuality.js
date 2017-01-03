@@ -11,8 +11,9 @@ function workcouncil()
             
         connection.acquire(function(err, con) 
         {
-            con.query( 'select title, dateActuality, publication, photo from Actuality '+
+            con.query( 'select title, dateActuality, publication, photo, firstname, lastname from Actuality '+
                 'inner join workscouncilactuality on workscouncilactuality.idActuality = Actuality.idActuality '+
+                'INNER JOIN Users ON Users.idUser = Actuality.idUser '+
                 'where workscouncilactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
             {
                 con.release();
