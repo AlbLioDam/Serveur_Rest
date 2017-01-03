@@ -119,6 +119,8 @@ console.log('    *      Server is running         **');
 console.log("    *                                **");
 console.log("    *         MIT Licence            **");
 console.log("    *    Alban / Lionel / Damien     **");
+console.log("    *         **************         **");
+console.log("    *         **  V 0.2   **         **");
 console.log("    ***********************************");
 console.log("    ***********************************");
 
