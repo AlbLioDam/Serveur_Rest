@@ -11,7 +11,7 @@ function LeisureActuality()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select Actuality.idActuality, title, dateActuality, publication, photo from Actuality '+
+            con.query('select Actuality.idActuality, title, dateActuality, publication, photo , category from Actuality '+
                 'inner join LeisureActuality on LeisureActuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc', function(err, result) 
             {
                 con.release();
