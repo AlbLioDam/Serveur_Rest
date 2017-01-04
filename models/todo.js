@@ -10,7 +10,7 @@ function Todo()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select teamName, taskName, duration, status, weight from toDo'
+            con.query('select * from toDo'
                 + ' inner join Team on Team.idTeam = toDo.idTeam'
                 + ' inner join Task on Task.idTask = toDo.idTask', function(err, result) 
             {

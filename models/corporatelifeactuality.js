@@ -10,10 +10,11 @@ function corporate()
     {
             
         connection.acquire(function(err, con) 
-        {con.query( 'select title, dateActuality, publication, photo from Actuality '+
-                'inner join corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
+        {con.query('SELECT title, dateActuality, publication, photo, firstname, lastname from Actuality '+
+                'INNER JOIN corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
+                'INNER JOIN Users ON Users.idUser = Actuality.idUser '+
                 'where corporatelifeactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
-{
+            {
                 con.release();
                 res.send(result);
                 console.log("**********************************");
