@@ -4,6 +4,8 @@ A REST server based on NodeJS, Express and MySQL with the NPM module [mysql](htt
 
 Use `npm start` to launch the node app. 
 
+Use `npm test` to start unit tests. 
+
 Edit `connection.js` to change database parameters with yours.
 
 `afpamon.sql` is a simple sql script used as example in this project. 
