@@ -1,3 +1,5 @@
+'use strict';
+
 var connection = require('../connection');
  
 function Task() 
@@ -23,11 +25,13 @@ function Task()
      * @params Task Task in json format
      * @params res response
      */
+
+    /*
     this.create = function(Task, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into Task set ?', Task, function(err, result) 
+            con.query('insert into Task(taskName,detail) VALUES (?,?)', [Task.taskName, Task.detail], function(err, result) 
             {
                 con.release();
                 if (err) 
@@ -37,10 +41,42 @@ function Task()
                 } else 
                 {
                     getLastId(res);
+                    console.log('OK')
                 }
             });
         });
     };
+    */
+
+    this.create = function(Task, res) 
+    {
+        connection.acquire(function(err, con) 
+        {
+
+            let task;        
+            var command = ('insert into Task(taskName,detail) VALUES (?,?);', [Task.taskName, Task.detail]);
+
+            con.query(command, function(err, result) 
+            {
+                con.release();
+                if (err) throw err;
+
+                Task_id = getLastId(result);
+
+                // insert weight and state
+
+                var weight  = Task.weight;
+                var status  = Task.status;
+                var command = ('insert into todo(idTask,weight,status) VALUES(?,?,?);',[Task_id,weight,status]);
+
+                con.query(command , function (err,result){
+                    con.release();
+                    if (err) throw err;
+                });
+            });
+        });
+    };
+
 
     /**
      * Get a specific Task

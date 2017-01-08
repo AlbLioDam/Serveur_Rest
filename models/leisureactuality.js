@@ -44,6 +44,8 @@ function LeisureActuality()
                 }
             });
         });
+
+        
     }
 
     /**
