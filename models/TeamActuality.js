@@ -11,8 +11,9 @@ function TeamActuality()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select Actuality.idActuality, title, dateActuality, publication, photo, idTeam from Actuality '+
-                'inner join TeamActuality on TeamActuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc', function(err, result) 
+            con.query('select * from Actuality '+
+                'INNER JOIN Users ON Users.idUser = Actuality.idUser '+
+                'INNER JOIN TeamActuality on TeamActuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc', function(err, result) 
             {
                 con.release();
                 res.send(result);
