@@ -11,10 +11,10 @@ function workcouncil()
             
         connection.acquire(function(err, con) 
         {
-            con.query( 'select title, dateActuality, publication, photo, firstname, lastname, Users.idUser from Actuality '+
+            con.query( 'select * from Actuality '+
                 'inner join workscouncilactuality on workscouncilactuality.idActuality = Actuality.idActuality '+
                 'INNER JOIN Users ON Users.idUser = Actuality.idUser '+
-                'where workscouncilactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
+                'ORDER BY Actuality.dateActuality DESC' , function(err, result) 
             {
                 con.release();
                 res.send(result);
@@ -108,7 +108,7 @@ function workcouncil()
      * @params id Actuality's id
      * @params res response
      */
-/*    this.delete = function(id, res) 
+    this.delete = function(id, res) 
     {
         connection.acquire(function(err, con) 
         {
@@ -120,13 +120,13 @@ function workcouncil()
                     console.log(err);
                     res.send({status: 1, message: 'Failed to delete'});
                 } 
-                else 
+                else
                 {
                     res.send({status: 0, message: 'Deleted successfully'});
                 }
             });
         });
-    };*/
+    };
 
     /**
      * 

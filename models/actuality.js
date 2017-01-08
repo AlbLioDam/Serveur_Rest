@@ -6,9 +6,9 @@ function Actuality()
      * Get ALL Actuality from table
      * @params res response 
      */
-    this.getAll = function(res) 
+    this.getAll = function(res)
     {
-        connection.acquire(function(err, con) 
+        connection.acquire(function(err, con)
         {
             con.query('select * from Actuality', function(err, result) 
             {
@@ -97,7 +97,7 @@ function Actuality()
      */
     this.delete = function(id, res) 
     {
-        connection.acquire(function(err, con) 
+        connection.acquire(function(err, con)
         {
             con.query('delete from Actuality where idActuality = ?', [id], function(err, result) 
             {
@@ -105,11 +105,11 @@ function Actuality()
                 if (err) 
                 {   
                     console.log(err);
-                    res.send({status: 1, message: 'Failed to delete'});
+                    res.send({status: 1, message: 'Failed to delete from Actuality'});
                 } 
                 else 
                 {
-                    res.send({status: 0, message: 'Deleted successfully'});
+                    res.send({status: 0, message: 'Deleted successfully from Actuality'});
                 }
             });
         });

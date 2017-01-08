@@ -6,24 +6,11 @@ function message()
      * Get ALL Message from table
      * @params res response 
      */
-   /* this.getAll = function(res) 
+    this.getAll = function(res)
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select u.lastname, u.firstname, u2.lastname, u2.firstname, message, dateMessage from Message'+
-            'INNER JOIN Users u ON u.idUser = Message.idUser'+
-            'INNER JOIN Users u2 ON u2.idUser = Message.idUser_Users', function(err, result) 
-            {
-                con.release();
-                res.send(result);
-            });
-        });
-    };*/
-        this.getAll = function(res) 
-    {
-        connection.acquire(function(err, con) 
-        {
-            con.query('select * from Message', function(err, result) 
+            con.query('select * from Message ORDER BY dateMessage ASC', function(err, result) 
             {
                 con.release();
                 res.send(result);
@@ -47,7 +34,8 @@ function message()
                 {
                     console.log(err);
                     res.send({status: 1, message: 'message creation failed'});
-                } else 
+                } 
+                else 
                 {
                     getLastId(res);
                 }

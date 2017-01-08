@@ -77,7 +77,7 @@ app.use('/message', MessageRouter);
 app.use('/todo', ToDoRouter);
 app.use('/teamActuality', TeamActualityRouter);
 app.use('/team',TeamRouter);
-app.use('/corpActuality', CorporateLifeActualityRouter);
+app.use('/corporatelifeactuality', CorporateLifeActualityRouter);
 app.use('/workCouncilActuality', WorkCouncilActualityRouter);
 app.use('/leisureActuality', LeisureActualityRouter);
 
