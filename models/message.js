@@ -10,7 +10,7 @@ function message()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select * from Message ORDER BY dateMessage ASC', function(err, result) 
+            con.query('select * from Message ORDER BY dateMessage DESC', function(err, result) 
             {
                 con.release();
                 res.send(result);
@@ -27,7 +27,7 @@ function message()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into message(message, dateMessage, idUser, idUser_Users) VALUES (?, now(), ?, ?)', [message.message, message.idUser, message.idUser_Users], function(err, result) 
+            con.query('insert into message(message, dateMessage, idUser, idUser_Users, read) VALUES (?, now(), ?, ?, ?)', [message.message, message.idUser, message.idUser_Users, message.read], function(err, result) 
             {
                 con.release();
                 if (err) 

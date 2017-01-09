@@ -160,6 +160,7 @@ CREATE TABLE Message(
         dateMessage  Datetime NOT NULL ,
         idUser       Int NOT NULL ,
         idUser_Users Int NOT NULL ,
+        read         Bool,
         PRIMARY KEY (idMessage )
 )ENGINE=InnoDB;
 
