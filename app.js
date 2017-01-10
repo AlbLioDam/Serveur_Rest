@@ -48,6 +48,7 @@ var TeamActualityRouter = require('./routes/TeamActualityRouter');
 var CorporateLifeActualityRouter = require('./routes/CorporateLifeActualityRouter');
 var WorkCouncilActualityRouter = require('./routes/WorkCouncilActualityRouter');
 var LeisureActualityRouter = require('./routes/LeisureActualityRouter');
+var HaveRouter = require('./routes/HaveRouter');
 
 /*-- Routes V2 --*/
 //var WorksCouncilActualityRouter = require('./routes/WorksCouncilActualityRouter');
@@ -56,7 +57,7 @@ var LeisureActualityRouter = require('./routes/LeisureActualityRouter');
 //var PostCommentRouter = require('./routes/PostCommentRouter');
 //var GotShortcutRouter = require('./routes/GotShortcutRouter');
 //var GotToolRouter = require('./routes/GotToolRouter');
-//var HaveRouter = require('./routes/HaveRouter');
+
 
 var connection = require('./connection');
 
@@ -80,6 +81,7 @@ app.use('/team',TeamRouter);
 app.use('/corporatelifeactuality', CorporateLifeActualityRouter);
 app.use('/workCouncilActuality', WorkCouncilActualityRouter);
 app.use('/leisureActuality', LeisureActualityRouter);
+app.use('/have', HaveRouter);
 
 /*-- App use V2--*/
 //app.use('/Todo', TodoRouter);
@@ -87,7 +89,7 @@ app.use('/leisureActuality', LeisureActualityRouter);
 //app.use('/Message', MessageRouter);
 //app.use('/GotShortcut', GotShortcutRouter);
 //app.use('/GotTool', GotToolRouter);
-//app.use('/Have', HaveRouter);
+
 
 
 /*-- Listen port --*/

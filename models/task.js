@@ -1,3 +1,5 @@
+'use strict';
+
 var connection = require('../connection');
  
 function Task() 
@@ -23,11 +25,12 @@ function Task()
      * @params Task Task in json format
      * @params res response
      */
+
     this.create = function(Task, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into Task set ?', Task, function(err, result) 
+            con.query('insert into Task(taskName,detail) VALUES (?,?)', [Task.taskName, Task.detail], function(err, result) 
             {
                 con.release();
                 if (err) 
@@ -37,10 +40,14 @@ function Task()
                 } else 
                 {
                     getLastId(res);
+                    console.log('OK')
                 }
             });
         });
     };
+
+    
+
 
     /**
      * Get a specific Task
@@ -123,7 +130,7 @@ function Task()
         console.log('get last id');
         connection.acquire(function(err, con) 
         {
-            con.query('SELECT LAST_INSERT_ID() as id',  function(err, result) {
+            con.query('SELECT MAX(idTask) as id FROM task',  function(err, result) {
                 con.release();
                 if (err) 
                 {
@@ -132,7 +139,7 @@ function Task()
                 }
                  else 
                  {
-                    res.send({status: 0, message: 'Task created successfully', id:result[0].id});
+                    res.send({status: 0, message: 'Task created successfully', idTask:result[0].id});
                 }
             });
         });
