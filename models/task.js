@@ -130,7 +130,7 @@ function Task()
         console.log('get last id');
         connection.acquire(function(err, con) 
         {
-            con.query('SELECT MAX(idTask) FROM task',  function(err, result) {
+            con.query('SELECT MAX(idTask) as id FROM task',  function(err, result) {
                 con.release();
                 if (err) 
                 {
@@ -139,8 +139,7 @@ function Task()
                 }
                  else 
                  {
-                    res.send({status: 0, message: 'Task created successfully', idTask:result[0].idTask});
-                    console.log("je suis le résultat "+result[0]);
+                    res.send({status: 0, message: 'Task created successfully', idTask:result[0].id});
                 }
             });
         });
