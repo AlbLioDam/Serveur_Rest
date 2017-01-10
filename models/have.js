@@ -12,7 +12,7 @@ function Have()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into Have(idUser,idTeam,idTask VALUES (?,?,?)', [Have.idUser, Have.idTeam, Have.idTask], function(err, result) 
+            con.query('insert into Have(idUser,idTeam,idTask) VALUES (?,?,?)', [Have.idUser, Have.idTeam, Have.idTask], function(err, result) 
             {
                 con.release();
                 if (err) 
