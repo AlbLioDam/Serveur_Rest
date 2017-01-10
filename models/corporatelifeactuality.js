@@ -8,12 +8,11 @@ function corporate()
      */
      this.getAll = function(res) 
     {
-            
         connection.acquire(function(err, con) 
-        {con.query('SELECT title, dateActuality, publication, photo, firstname, lastname, Users.idUser from Actuality '+
+        {con.query('SELECT * from Actuality '+
                 'INNER JOIN corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
                 'INNER JOIN Users ON Users.idUser = Actuality.idUser '+
-                'where corporatelifeactuality.idActuality = Actuality.idActuality order by Actuality.dateActuality desc' , function(err, result) 
+                'ORDER BY Actuality.dateActuality DESC' , function(err, result)
             {
                 con.release();
                 res.send(result);
@@ -38,7 +37,7 @@ function corporate()
             con.query('insert into Actuality(title, dateActuality, publication, photo, idUser) VALUES (?, now(), ?, ?, ?)', [corporatelifeactuality.title, corporatelifeactuality.publication, corporatelifeactuality.photo, corporatelifeactuality.idUser], function(err, result)
             {
                 con.release();
-                if (err) 
+                if (err)
                 {
                     console.log(err);
                     res.send({status: 1, message: 'Actuality creation failed'});
@@ -55,13 +54,13 @@ function corporate()
     /**
      * Get Team Actualities by teamId
      */
-    this.getAllTeamActualities = function(id, res) 
+/*    this.getAllCorporateLifeActualities = function(id, res) 
     {
-        connection.acquire(function(err, con) 
+        connection.acquire(function(err, con)
         {
             con.query('select title, dateActuality, publication, photo from Actuality '+
-                'inner join TeamActuality on TeamActuality.idActuality = Actuality.idActuality '+
-                'where TeamActuality.idTeam = ?', [id], function(err, result) {
+                'inner join corporatelifeactuality on corporatelifeactuality.idActuality = Actuality.idActuality '+
+                'where corporatelifeactuality.idTeam = ?', [id], function(err, result) {
                 con.release();
                 if (err) 
                 {
@@ -74,7 +73,7 @@ function corporate()
                 }
             });
         });
-    };
+    };*/
   
 
     /**
@@ -111,7 +110,7 @@ function corporate()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('delete from TeamActuality where idActuality = ?', [id], function(err, result) 
+            con.query('delete from corporatelifeactuality where idActuality = ?', [id], function(err, result) 
             {
                 con.release();
                 if (err) 

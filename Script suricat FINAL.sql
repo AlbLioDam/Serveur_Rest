@@ -160,6 +160,7 @@ CREATE TABLE Message(
         dateMessage  Datetime NOT NULL ,
         idUser       Int NOT NULL ,
         idUser_Users Int NOT NULL ,
+        readStatus   Bool ,
         PRIMARY KEY (idMessage )
 )ENGINE=InnoDB;
 
@@ -335,6 +336,12 @@ INSERT INTO Team(teamName, projectName, projectDescription) VALUES ("Team EntreN
 #------------------------------------------------------------
 # INSERT : belongTo (Users - Team)
 #------------------------------------------------------------
+INSERT INTO belongTo(idUser, idTeam) VALUES (1, 1);
+INSERT INTO belongTo(idUser, idTeam) VALUES (1, 2);
+INSERT INTO belongTo(idUser, idTeam) VALUES (1, 3);
+INSERT INTO belongTo(idUser, idTeam) VALUES (1, 4);
+INSERT INTO belongTo(idUser, idTeam) VALUES (1, 5);
+
 INSERT INTO belongTo(idUser, idTeam) VALUES (2, 1);
 INSERT INTO belongTo(idUser, idTeam) VALUES (3, 1);
 INSERT INTO belongTo(idUser, idTeam) VALUES (4, 1);
@@ -345,12 +352,12 @@ INSERT INTO belongTo(idUser, idTeam) VALUES (6, 2);
 INSERT INTO belongTo(idUser, idTeam) VALUES (7, 3);
 INSERT INTO belongTo(idUser, idTeam) VALUES (8, 3);
 
-INSERT INTO belongTo(idUser, idTeam) VALUES (9, 4);
-INSERT INTO belongTo(idUser, idTeam) VALUES (10, 4);
-INSERT INTO belongTo(idUser, idTeam) VALUES (11, 4);
+INSERT INTO belongTo(idUser, idTeam) VALUES (12, 4);
+INSERT INTO belongTo(idUser, idTeam) VALUES (13, 4);
 
-INSERT INTO belongTo(idUser, idTeam) VALUES (12, 5);
-INSERT INTO belongTo(idUser, idTeam) VALUES (13, 5);
+INSERT INTO belongTo(idUser, idTeam) VALUES (9, 5);
+INSERT INTO belongTo(idUser, idTeam) VALUES (10, 5);
+INSERT INTO belongTo(idUser, idTeam) VALUES (11, 5);
 
 #------------------------------------------------------------
 # INSERT : Task

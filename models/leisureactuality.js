@@ -63,11 +63,11 @@ function LeisureActuality()
                 if (err) 
                 {   
                     console.log(err);
-                    res.send({status: 1, message: 'Failed to delete'});
+                    res.send({status: 1, message: 'Failed to delete from LeisureActuality'});
                 } 
-                else 
+                else
                 {
-                    res.send({status: 0, message: 'Deleted successfully'});
+                    res.send({status: 0, message: 'Deleted successfully from LeisureActuality'});
                 }
             });
         });

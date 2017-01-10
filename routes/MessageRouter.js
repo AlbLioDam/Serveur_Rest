@@ -26,6 +26,12 @@ MessageRouter.route('/:id')
     message.getAllMessages(req.params.id, req.params.id2, res);
 })
 
+.put(function(req,res,next)
+{
+    //message : get element by req.params.itemId
+    message.markAsRead(req.params.id, res);
+})
+
 .delete(function(req, res, next)
 {
     //message : get element by req.params.itemId
