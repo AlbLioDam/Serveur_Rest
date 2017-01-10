@@ -29,7 +29,7 @@ function Todo()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('insert into toDo(status,weight) VALUES (?,?)', [Todo.status, Todo.weight], function(err, result) 
+            con.query('insert into toDo(status,weight,duration,idTeam,idTask VALUES (?,?,?,?,?)', [Todo.Status, Todo.Weight, Todo.Duration, Todo.idTeam, Todo.idTask], function(err, result) 
             {
                 con.release();
                 if (err) 

@@ -26,7 +26,6 @@ function Task()
      * @params res response
      */
 
-    /*
     this.create = function(Task, res) 
     {
         connection.acquire(function(err, con) 
@@ -46,36 +45,8 @@ function Task()
             });
         });
     };
-    */
 
-    this.create = function(Task, res) 
-    {
-        connection.acquire(function(err, con) 
-        {
-
-            let task;        
-            var command = ('insert into Task(taskName,detail) VALUES (?,?);', [Task.taskName, Task.detail]);
-
-            con.query(command, function(err, result) 
-            {
-                con.release();
-                if (err) throw err;
-
-                Task_id = getLastId(result);
-
-                // insert weight and state
-
-                var weight  = Task.weight;
-                var status  = Task.status;
-                var command = ('insert into todo(idTask,weight,status) VALUES(?,?,?);',[Task_id,weight,status]);
-
-                con.query(command , function (err,result){
-                    con.release();
-                    if (err) throw err;
-                });
-            });
-        });
-    };
+    
 
 
     /**
@@ -159,7 +130,7 @@ function Task()
         console.log('get last id');
         connection.acquire(function(err, con) 
         {
-            con.query('SELECT LAST_INSERT_ID() as id',  function(err, result) {
+            con.query('SELECT MAX(idTask) FROM task',  function(err, result) {
                 con.release();
                 if (err) 
                 {
@@ -168,7 +139,8 @@ function Task()
                 }
                  else 
                  {
-                    res.send({status: 0, message: 'Task created successfully', id:result[0].id});
+                    res.send({status: 0, message: 'Task created successfully', idTask:result[0].idTask});
+                    console.log("je suis le résultat "+result[0]);
                 }
             });
         });
