@@ -15,8 +15,8 @@ var cors = require('cors');
 var app = express();
 
 // use it before all route definitions
-//app.use(cors({origin: 'http://localhost:8081'}));
-app.use(cors({origin: 'http://10.111.61.81:8081'}));
+app.use(cors({origin: 'http://localhost:8081'}));
+//app.use(cors({origin: 'http://10.111.61.81:8081'}));
 app.options('*', cors());
 
 /*--Parser --*/

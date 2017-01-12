@@ -113,7 +113,7 @@ CREATE TABLE Task(
         idTask   int (11) Auto_increment  NOT NULL ,
         taskName Varchar (60) NOT NULL ,
         detail   Varchar (250) ,
-        PRIMARY KEY (idTask ) ,
+        PRIMARY KEY (idTask )
 )ENGINE=InnoDB;
 
 
@@ -287,7 +287,6 @@ INSERT INTO Department(departmentName) VALUES ("Service développement");
 INSERT INTO Department(departmentName) VALUES ("Service secrétariat");
 INSERT INTO Department(departmentName) VALUES ("Service marketing");
 INSERT INTO Department(departmentName) VALUES ("Administrateur");
-INSERT INTO Department(departmentName) VALUES ("Service Informatique");
 
 #------------------------------------------------------------
 # INSERT : USERS
@@ -439,37 +438,37 @@ INSERT INTO gotShortcut(idTeam, idUser, shortcut) VALUES (1, 1, "U:\Partage\01- 
 #------------------------------------------------------------
 # INSERT : Actuality
 #------------------------------------------------------------
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 1", NOW(), "C'est une actualité de test CE 1", null, 3);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 2", NOW(), "C'est une actualité de test CE 2", null, 7);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 3", NOW(), "C'est une actualité de test CE 3", null, 3);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 4", NOW(), "C'est une actualité de test CE 4", null, 10);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 5", NOW(), "C'est une actualité de test CE 5", null, 10);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 6", NOW(), "C'est une actualité de test CE 6", null, 10);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 7", NOW(), "C'est une actualité de test CE 7", null, 11);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 8", NOW(), "C'est une actualité de test CE 8", null, 12);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 1", NOW(), "est une actualité de test CE 1", null, 3);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 2", NOW(), "est une actualité de test CE 2", null, 7);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 3", NOW(), "est une actualité de test CE 3", null, 3);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 4", NOW(), "est une actualité de test CE 4", null, 10);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 5", NOW(), "est une actualité de test CE 5", null, 10);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 6", NOW(), "est une actualité de test CE 6", null, 10);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 7", NOW(), "est une actualité de test CE 7", null, 11);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du CE 8", NOW(), "est une actualité de test CE 8", null, 12);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 9", NOW(), "C'est une actualité de test Team 1", null, 2);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 10", NOW(), "C'est une actualité de test Team 2", null, 2);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 9", NOW(), "est une actualité de test Team 1", null, 2);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 10", NOW(), "est une actualité de test Team 2", null, 2);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 11", NOW(), "C'est une actualité de test Team 1", null, 5);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 12", NOW(), "C'est une actualité de test Team 2", null, 5);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 11", NOW(), "est une actualité de test Team 1", null, 5);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 12", NOW(), "est une actualité de test Team 2", null, 5);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 13", NOW(), "C'est une actualité de test Team 1", null, 7);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 14", NOW(), "C'est une actualité de test Team 2", null, 7);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 15", NOW(), "C'est une actualité de test Team 3", null, 7);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 13", NOW(), "est une actualité de test Team 1", null, 7);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 14", NOW(), "est une actualité de test Team 2", null, 7);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 15", NOW(), "est une actualité de test Team 3", null, 7);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 16", NOW(), "C'est une actualité de test Team 1", null, 11);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 16", NOW(), "est une actualité de test Team 1", null, 11);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 17", NOW(), "C'est une actualité de test Team 1", null, 13);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de la Team 17", NOW(), "est une actualité de test Team 1", null, 13);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 1", NOW(), "C'est une actualité de test Loisir 1", null, 1);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 2", NOW(), "C'est une actualité de test Loisir 2", null, 3);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 3", NOW(), "C'est une actualité de test Loisir 3", null, 7);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 4", NOW(), "C'est une actualité de test Loisir 4", null, 8);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 5", NOW(), "C'est une actualité de test Loisir 5", null, 8);
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 6", NOW(), "C'est une actualité de test Loisir 6", null, 12);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 1", NOW(), "est une actualité de test Loisir 1", null, 1);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 2", NOW(), "est une actualité de test Loisir 2", null, 3);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 3", NOW(), "est une actualité de test Loisir 3", null, 7);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 4", NOW(), "est une actualité de test Loisir 4", null, 8);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 5", NOW(), "est une actualité de test Loisir 5", null, 8);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality de loisir 6", NOW(), "est une actualité de test Loisir 6", null, 12);
 
-INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du VE 1", NOW(), "C'est une actualité de test CE 1", null, 11);
+INSERT INTO Actuality(title, dateActuality, publication, photo, idUser) VALUES ("Actuality du VE 1", NOW(), "est une actualité de test CE 1", null, 11);
 
 #------------------------------------------------------------
 # INSERT : WorksCouncilActuality

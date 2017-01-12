@@ -13,13 +13,13 @@ function Connection()
     this.pool = mysql.createPool({
       connectionLimit: 10,
       //Lionel
-      host: '10.111.61.81',
+/*      host: '10.111.61.81',
       user: 'cdi',
-      password: 'cdi',
+      password: 'cdi',*/
       
-/*      host: 'localhost',
+      host: 'localhost',
       user: 'root',
-      password: '',*/
+      password: '',
       database: 'suricat'
     });
   };
