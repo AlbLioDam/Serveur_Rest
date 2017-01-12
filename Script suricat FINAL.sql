@@ -114,7 +114,6 @@ CREATE TABLE Task(
         taskName Varchar (60) NOT NULL ,
         detail   Varchar (250) ,
         PRIMARY KEY (idTask ) ,
-        UNIQUE (taskName )
 )ENGINE=InnoDB;
 
 
