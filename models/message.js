@@ -10,9 +10,9 @@ function message()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('select message, u1.idUser as id1, u1.firstname as f1, u2.idUser as id2, u2.firstname as f2, readStatus from Message '+
-                      'INNER JOIN Users u1 ON u1.idUser = Message.idUser '+
-                      'INNER JOIN Users u2 ON u2.idUser = Message.idUser_Users '+
+            con.query('select idMessage, message, u1.idUser as id1, u1.firstname as f1, u2.idUser as id2, u2.firstname as f2, readStatus from Message '+
+                      'INNER JOIN Users u1 ON u1.idUser = Message.idUser_Users '+
+                      'INNER JOIN Users u2 ON u2.idUser = Message.idUser '+
                       'ORDER BY dateMessage DESC'
                       , function(err, result) 
             {
