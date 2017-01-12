@@ -19,6 +19,12 @@ UserRouter.route('/')
     user.create(req.body, res);
 })
 
+.put(function(req, res, next)
+{
+    //TODO : convert json to other json
+    user.update(req.body, res);
+})
+
 /*-- PATH & METHODS AVAILABLE FROM ROUTE '/:id' --*/
 UserRouter.route('/:id')
 .get(function(req,res,next)
