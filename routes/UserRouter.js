@@ -33,11 +33,11 @@ UserRouter.route('/:id')
     user.get(req.params.id, res);
 })
 
-.put(function(req, res, next)
+/*.put(function(req, res, next)
 {
   //TODO : update user by req.params.userId
     user.update(req.params.id, req.body, res);
-})
+})*/
 
 /*-- PATH & METHODS AVAILABLE FROM ROUTE '/desactivate/:id' --*/
 UserRouter.route('/desactivate/:id')

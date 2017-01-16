@@ -74,7 +74,8 @@ function User()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Users set ? where idUser = ?', [user, user.id], function(err, result) 
+            con.query('update Users SET email = ?, password = ?, firstname = ?, lastname = ?, status = ?, car = ?, carsharing = ?, active = ?, address = ?, city = ?, corporateLifeRepresentative = ?, workCouncilRepresentative = ?, idDepartment = ? where idUser = ?', 
+                [user.email, user.password, user.firstname, user.lastname, user.status.st, user.car, user.carsharing, user.active, user.address, user.city, user.corporateLifeRepresentative, user.workCouncilRepresentative, user.idDepartment.idDepartment , user.idUser], function(err, result) 
             {
                 con.release();
                 if (err) 
