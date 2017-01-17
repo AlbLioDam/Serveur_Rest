@@ -119,11 +119,11 @@ function Todo()
      * @params id Todo's id
      * @params res response
      */
-    this.delete = function(id, res) 
+    this.delete = function(idTask, idTeam, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('delete from toDo where id = ?', [id], function(err, result) 
+            con.query('delete from toDo where idTask = ? AND idTeam = ?', [idTask, idTeam], function(err, result) 
             {
                 con.release();
                 if (err) 
@@ -131,7 +131,7 @@ function Todo()
                     console.log(err);
                     res.send({status: 1, message: 'Failed to delete'});
                 } 
-                else 
+                else
                 {
                     res.send({status: 0, message: 'Deleted successfully'});
                 }

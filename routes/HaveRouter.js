@@ -15,7 +15,14 @@ HaveRouter.route('/')
 {
     //have : convert json to other json
     have.create(req.body, res);
-});
+})
+
+.put(function(req, res, next)
+{
+	console.log("have - 3 arguments");
+    //have : get element by req.params.itemId
+    have.delete(req.params.idTask, req.params.idTeam, res);
+})
 
 HaveRouter.route('/:id')
 
@@ -34,11 +41,5 @@ HaveRouter.route('/:id/:id')
   //have : get element by req.params.itemId
     have.update(req.params.id, req.params.id2, req.body, res);
 })
-
-.delete(function(req, res, next)
-{
-    //have : get element by req.params.itemId
-    have.delete(req.params.id, req.params.id2, res);
-});
  
 module.exports = HaveRouter;

@@ -25,7 +25,7 @@ ToDoRouter.route('/:id')
     todo.getAllTasksByTeamId(req.params.id, res);
 })
 
-ToDoRouter.route('/:id/:id')
+ToDoRouter.route('/:idTask/:idTeam')
 
 //faire un get par 2 ids
 
@@ -38,7 +38,7 @@ ToDoRouter.route('/:id/:id')
 .delete(function(req, res, next)
 {
     //TODO : get element by req.params.itemId
-    todo.delete(req.params.id, req.params.id2, res);
+    todo.delete(req.params.idTask, req.params.idTeam, res);
 });
  
 module.exports = ToDoRouter;
