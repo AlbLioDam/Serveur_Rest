@@ -123,7 +123,7 @@ function Team()
         console.log('get last id');
         connection.acquire(function(err, con) 
         {
-            con.query('SELECT LAST_INSERT_ID() as id',  function(err, result) {
+            con.query('SELECT MAX(idTeam) as id FROM Team',  function(err, result) {
                 con.release();
                 if (err) 
                 {
