@@ -5,6 +5,8 @@ function Todo() {
      * Get ALL Todo from table
      * @params res response 
      */
+
+    /*
     this.getAll = function (res) {
         connection.acquire(function (err, con) {
             con.query('select * from toDo'
@@ -14,7 +16,7 @@ function Todo() {
                     res.send(result);
                 });
         });
-    };
+    };*/
 
     /**
      * Create a Todo
@@ -112,7 +114,7 @@ function Todo() {
         });
     };
 
-    this.getAllTaskInfo = function (id, res) {
+    this.getAll = function (id, res) {
         connection.acquire(function (err, con) {
             con.query('select todo.idTask, task.taskName, todo.idTeam, Team.teamName, have.idUser, Users.firstname, Users.lastname, todo.duration, todo.status, todo.weight FROM todo'
                 + ' LEFT JOIN have ON todo.idTeam = have.idTeam AND todo.idTask = have.idTask'
