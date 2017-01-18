@@ -119,7 +119,7 @@ function Todo() {
 
     this.getAll = function (res) {
         connection.acquire(function (err, con) {
-            con.query('select todo.idTask, task.taskName, todo.idTeam, Team.teamName, have.idUser, Users.firstname, Users.lastname, todo.duration, todo.status, todo.weight FROM todo'
+            con.query('select todo.idTask, task.taskName, task.detail, todo.idTeam, Team.teamName, have.idUser, Users.firstname, Users.lastname, todo.duration, todo.status, todo.weight FROM todo'
                 + ' LEFT JOIN have ON todo.idTeam = have.idTeam AND todo.idTask = have.idTask'
                 + ' LEFT JOIN Users ON Users.idUser = have.idUser'
                 + ' LEFT JOIN Task ON Task.idTask = todo.idTask '
