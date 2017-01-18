@@ -11,8 +11,9 @@ function belongto()
         connection.acquire(function(err, con) 
         {
             con.query('select * FROM belongto'+
-            ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
-            ' INNER JOIN Team ON Team.idTeam=belongto.idTeam', function(err, result)
+            ' INNER JOIN Users ON Users.idUser = belongto.idUser'+
+            ' INNER JOIN Team ON Team.idTeam = belongto.idTeam'+
+            ' AND Users.active = true', function(err, result)
             {
                 con.release();
                 res.send(result);
@@ -51,7 +52,8 @@ function belongto()
             con.query('SELECT * FROM belongto'+
             ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
             ' INNER JOIN Team ON Team.idTeam=belongto.idTeam'+
-            ' WHERE belongto.idTeam = ?', [idTeam], function(err, result)
+            ' WHERE belongto.idTeam = ?'+
+            ' AND Users.active = true' , [idTeam], function(err, result)
             {
                 con.release();
                 res.send(result);
@@ -72,7 +74,8 @@ function belongto()
             con.query('SELECT * FROM Users WHERE Users.idUser NOT IN (SELECT belongto.idUser FROM belongto'+
             ' INNER JOIN Users ON Users.idUser=belongto.idUser'+
             ' INNER JOIN Team ON Team.idTeam=belongto.idTeam'+
-            ' WHERE belongto.idTeam = ?)', [idTeam], function(err, result)
+            ' WHERE belongto.idTeam = ?)'+
+            ' AND Users.active = true', [idTeam], function(err, result)
             {
                 con.release();
                 res.send(result);
