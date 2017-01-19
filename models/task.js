@@ -79,7 +79,7 @@ function Task()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Task set ? where id = ?', [Task, Task.id], function(err, result) 
+            con.query('update Task set ? where idTask = ?', [Task, Task.idTask], function(err, result) 
             {
                 con.release();
                 if (err) 
