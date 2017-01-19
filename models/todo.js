@@ -79,16 +79,16 @@ function Todo() {
      * Update a specific Todo
      * @params Todo Todo in json format
      */
-    this.update = function (Todo, res) {
+    this.update = function (task, res) {
         connection.acquire(function (err, con) {
-            con.query('update toDo set ? where id = ?', [Todo, Todo.id], function (err, result) {
+            con.query('update Todo set duration=?,status=?,weight=? where idTask = ? AND idTeam = ?', [task.duration, task.status,task.weight,task.idTask,task.idTeam], function (err, result) {
                 con.release();
                 if (err) {
                     console.log(err);
-                    res.send({ status: 1, message: 'Todo update failed' });
+                    res.send({ status: 1, message: 'TodoTask update failed' });
                 }
                 else {
-                    res.send({ status: 0, message: 'Todo updated successfully' });
+                    res.send({ status: 0, message: 'TodoTask updated successfully' });
                 }
             });
         });

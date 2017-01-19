@@ -15,7 +15,12 @@ TaskRouter.route('/')
 {
     //TODO : convert json to other json
     task.create(req.body, res);
-});
+})
+
+.put(function(req,res,next)
+{
+    task.update(req.body, res);
+})
 
 TaskRouter.route('/:id')
 

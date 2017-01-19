@@ -75,21 +75,22 @@ function Task()
      * Update a specific Task
      * @params Task Task in json format
      */
-    this.update = function(Task, res) 
+    this.update = function(task, res) 
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Task set ? where id = ?', [Task, Task.id], function(err, result) 
+            con.query('update Task SET taskName= ?, detail = ? where idTask = ?', 
+                [task.taskName, task.detail, task.idTask], function(err, result) 
             {
                 con.release();
                 if (err) 
                 {
                     console.log(err);
-                    res.send({status: 1, message: 'Task update failed'});
+                    res.send({status: 1, message: 'task update failed'});
                 } 
                 else 
                 {
-                    res.send({status: 0, message: 'Task updated successfully'});
+                    res.send({status: 0, message: 'task updated successfully'});
                 }
             });
         });
@@ -119,6 +120,8 @@ function Task()
             });
         });
     };
+
+    
 
     /**
      * get the last id 

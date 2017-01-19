@@ -15,6 +15,11 @@ ToDoRouter.route('/')
 {
     //TODO : convert json to other json
     todo.create(req.body, res);
+})
+
+.put(function(req,res,next)
+{
+    todo.update(req,res,next);
 });
 
 ToDoRouter.route('/:id')

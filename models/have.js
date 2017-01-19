@@ -70,6 +70,27 @@ function Have()
             });
         });
     };
+
+    this.update = function(task, res) 
+    {
+        connection.acquire(function(err, con) 
+        {
+            con.query('update Have SET idUser= ?, idTeam = ? where idTask = ?', 
+                [task.idUser, task.idTeam, task.idTask], function(err, result) 
+            {
+                con.release();
+                if (err) 
+                {
+                    console.log(err);
+                    res.send({status: 1, message: 'have update failed'});
+                } 
+                else 
+                {
+                    res.send({status: 0, message: 'have updated successfully'});
+                }
+            });
+        });
+    };
 }
 
 module.exports = new Have();
