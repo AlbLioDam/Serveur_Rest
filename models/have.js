@@ -51,11 +51,11 @@ function Have()
         });
     };
 
-    this.delete = function(idTask, idTeam, res) 
+    this.delete = function(idTask, idTeam, idUser, res) 
     {
         connection.acquire(function(err, con)
         {
-            con.query('delete from have where idTask = ? AND idTeam = ?', [idTask, idTeam], function(err, result) 
+            con.query('delete from have where idTask = ? AND idTeam = ? AND idUser = ?', [idTask, idTeam, idUser], function(err, result) 
             {
                 con.release();
                 if (err) 
@@ -75,7 +75,7 @@ function Have()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Have SET idUser= ?, idTeam = ? where idTask = ?', 
+            con.query('update Have SET idUser= ? WHERE idTeam = ? AND idTask = ?', 
                 [task.idUser, task.idTeam, task.idTask], function(err, result) 
             {
                 con.release();

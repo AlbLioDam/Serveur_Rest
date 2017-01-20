@@ -19,7 +19,7 @@ ToDoRouter.route('/')
 
 .put(function(req,res,next)
 {
-    todo.update(req,res,next);
+    todo.update(req.body,res,next);
 });
 
 ToDoRouter.route('/:id')

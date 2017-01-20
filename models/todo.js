@@ -31,6 +31,7 @@ function Todo() {
                     console.log(err);
                     res.send({ status: 1, message: 'Todo creation failed' });
                 } else {
+                    res.send({ status: 0, message: 'Todo creation ok' });
                     //getLastId(res);
                 }
             });

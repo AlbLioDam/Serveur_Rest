@@ -18,11 +18,13 @@ HaveRouter.route('/')
     have.create(req.body, res);
 })
 
-.put(function(req, res, next)
+HaveRouter.route('/:idTask/:idTeam/:idUser')
+
+.delete(function(req, res, next)
 {
 	console.log("have - 3 arguments");
     //have : get element by req.params.itemId
-    have.delete(req.params.idTask, req.params.idTeam, res);
+    have.delete(req.params.idTask, req.params.idTeam, req.params.idUser, res);
 })
 
 HaveRouter.route('/update')
