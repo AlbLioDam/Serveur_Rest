@@ -24,5 +24,13 @@ HaveRouter.route('/')
     //have : get element by req.params.itemId
     have.delete(req.params.idTask, req.params.idTeam, res);
 })
+
+HaveRouter.route('/update')
+
+.put(function(req, res, next)
+{
+	console.log("/have/update");
+    have.update(req.body, res);
+})
  
 module.exports = HaveRouter;
