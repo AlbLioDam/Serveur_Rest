@@ -45,6 +45,7 @@ function Have()
                     res.send({status: 1, message: 'Have creation failed'});
                 } else 
                 {
+                    res.send({status: 0, message: 'Have creation ok'});
                     /*getLastId(res);*/
                 }
             });
@@ -75,7 +76,7 @@ function Have()
     {
         connection.acquire(function(err, con) 
         {
-            con.query('update Have SET idUser= ? WHERE idTeam = ? AND idTask = ?', 
+            con.query('update Have SET idUser = ? WHERE idTeam = ? AND idTask = ?', 
                 [task.idUser, task.idTeam, task.idTask], function(err, result) 
             {
                 con.release();

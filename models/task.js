@@ -40,7 +40,7 @@ function Task()
                 } else 
                 {
                     getLastId(res);
-                    console.log('OK')
+                    console.log('creation task OK')
                 }
             });
         });

@@ -82,7 +82,19 @@ function Todo() {
      */
     this.update = function (task, res) {
         connection.acquire(function (err, con) {
-            con.query('update Todo set duration=?,status=?,weight=? where idTask = ? AND idTeam = ?', [task.duration, task.status,task.weight,task.idTask,task.idTeam], function (err, result) {
+            con.query('update Todo set duration = ?, status = ?, weight = ?,'+
+            ' dateDeDebut = CASE ? '+
+                                'WHEN "now" THEN now() '+
+                                'WHEN "null" THEN null '+
+                                'ELSE dateDeDebut '+
+                            'END,'+
+            ' dateDeFin = CASE ? '+
+                                'WHEN "now" THEN now() '+
+                                'WHEN "null" THEN null '+
+                                'ELSE dateDeFin '+
+                            'END'+
+            ' where idTask = ? AND idTeam = ?',
+                [task.duration,task.status,task.weight,task.dateDeDebut,task.dateDeFin,task.idTask,task.idTeam], function (err, result) {
                 con.release();
                 if (err) {
                     console.log(err);
