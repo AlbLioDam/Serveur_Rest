@@ -123,7 +123,7 @@ console.log("    *                                **");
 console.log("    *         MIT Licence            **");
 console.log("    *    Alban / Lionel / Damien     **");
 console.log("    *         **************         **");
-console.log("    *         **  V 0.2   **         **");
+console.log("    *         **  V 1.0   **         **");
 console.log("    ***********************************");
 console.log("    ***********************************");
 
