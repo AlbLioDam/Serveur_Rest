@@ -29,7 +29,7 @@ function User()
         connection.acquire(function(err, con) 
         {
             console.log("ici : " + user);
-            con.query('insert into users(email, password, idDepartment) VALUES(?,?,?)', [user.email, user.password, user.idDepartment], function(err, result) 
+            con.query('insert into users(email, password, idDepartment, status, firstname, lastname) VALUES(?,?,?,?, "A", "compléter")', [user.email, user.password, user.idDepartment.idDepartment, user.status.st], function(err, result) 
             {
                 con.release();
                 if (err) 
