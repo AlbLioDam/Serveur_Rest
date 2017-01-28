@@ -14,9 +14,10 @@ CREATE TABLE Users(
         idUser                      int (11) Auto_increment  NOT NULL ,
         email                       Varchar (50) NOT NULL ,
         password                    Varchar (20) NOT NULL ,
-        firstname                   Varchar (30) NOT NULL ,
-        lastname                    Varchar (30) NOT NULL ,
-        status                      Varchar (30) ,
+        status                      Varchar (30) NOT NULL,
+        idDepartment                Int NOT NULL ,
+        firstname                   Varchar (30) ,
+        lastname                    Varchar (30) ,
         car                         Bool ,
         carsharing                  Bool ,
         active                      Bool ,
@@ -24,7 +25,6 @@ CREATE TABLE Users(
         city                        Varchar (100) ,
         corporateLifeRepresentative Bool ,
         workCouncilRepresentative   Bool ,
-        idDepartment                Int NOT NULL ,
         PRIMARY KEY (idUser )
 )ENGINE=InnoDB;
 
